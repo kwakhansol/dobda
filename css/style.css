@@ -1,0 +1,874 @@
+@charset "UTF-8";
+@media (max-width: 1000px) {
+    body {
+        background-color: white;
+    }
+}
+
+
+/* reset */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a,
+abbr,
+acronym,
+address,
+applet,
+b,
+big,
+blockquote,
+body,
+center,
+cite,
+code,
+dd,
+del,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+font,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+object,
+ol,
+p,
+pre,
+q,
+s,
+samp,
+small,
+span,
+strike,
+strong,
+sub,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr,
+tt,
+u,
+ul,
+var {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    font-size: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+img {
+    vertical-align: middle;
+}
+
+a img {
+    border: none;
+}
+
+li {
+    list-style: none;
+}
+
+address,
+em,
+i {
+    font-style: normal;
+}
+
+
+/*3강*/
+
+
+/*layout*/
+
+body {
+    font-family: 'NanumSquare', sans-serif !important;
+    font-size: 14px;
+    color: #4e4e4e;
+    line-height: 1.4;
+}
+
+.wrap {
+    width: 100%;
+    min-width: 1100px;
+}
+
+
+/*header*/
+
+header {
+    width: 100%;
+    height: 120px;
+    line-height: 120px;
+    padding: 0 60px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+}
+
+header .logo {
+    display: block;
+    font-size: 42px;
+    letter-spacing: -4px;
+    color: #39312b;
+    float: left;
+}
+
+
+/* ㄴ> a 는 inline요소여서 width 와 heigh을 줄 수 없기떄문에 display를 block으로 지정해준다.*/
+
+header nav {
+    float: right;
+}
+
+header nav .gnb li {
+    display: inline-block;
+    margin-left: 60px;
+}
+
+
+/* ㄴ> li는 block속성으로  block속성을 유지하면서 + inline 속성이 여으로 나열 될 수 있도록 inline-block으로 지정해주겠다
+      block속성은 한줄을 다 차지하는데, inline 속성은 옆으로 나열이 되기 때문에 완성본의 결과와 같이 나열이 된다.*/
+
+header nav .gnb li a {
+    display: block;
+    font-size: 18px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+header nav .gnb li a:after {
+    content: '';
+    width: 0;
+    height: 1px;
+    position: absolute;
+    background: #888;
+    bottom: 47px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s;
+}
+
+header nav .gnb li a:focus:after,
+header nav .gnb li a:hover:after {
+    width: 100%;
+}
+
+
+/*3강*/
+
+
+/*visual*/
+
+section.visual {
+    margin-top: 120px;
+    padding-bottom: 50px;
+    position: relative;
+}
+
+section.visual:before {
+    content: '';
+    width: 53%;
+    height: 400px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #f0f0f0;
+}
+
+section.visual .img {
+    width: 94%;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+section.visual .img img {
+    width: 100%;
+}
+
+section.visual .title {
+    position: absolute;
+    top: 40%;
+    left: 8%;
+    color: #fff;
+}
+
+section.visual .title h2 {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+section.visual .title p {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+section.visual .menu {
+    position: absolute;
+    bottom: 15%;
+    left: 8%;
+}
+
+section.visual .menu li {
+    float: left;
+    margin-right: 60px;
+}
+
+section.visual .menu li a {
+    display: block;
+    background: red;
+    color: #fff;
+}
+
+section.visual .menu li a p {
+    float: left;
+    font-weight: bold;
+    line-height: 1.6;
+    font-size: 20px;
+}
+
+section.visual .menu li a p span {
+    display: block;
+    font-weight: 100;
+    font-size: 15px;
+    color: #aaa;
+}
+
+section.visual .menu li a .arrow {
+    display: block;
+    float: right;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+
+/*display : block 해서 화삺표가 내려왔기때문에,float:right 해주고, 가상컨텐츠를 위쪽에 위치시키도록 margin-top을 10px , margin-left 20px준다
+arrow를 relative로 주고 뒤에 가상컨텐츠가 올수있도록 한뒤, 가상컨텐츠보다  arrow가 앞으로 보일 수 있도록 zindex-1준다.
+*/
+
+section.visual .menu li a .arrow:before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    background: rgba(252, 252, 252, 0.4);
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    z-index: -1;
+    transition: all 0.2s;
+}
+
+
+/*가상컨텐츠 after와 before의 차이가 뭐지?...*/
+
+section.visual .menu li a:focus .arrow:before,
+section.visual .menu li a:hover .arrow:before {
+    right: 0;
+    top: 0;
+}
+
+
+/*a에 hover 했을때 가상컨텐츠는, tab키로 이동했을때 가상컨텐츠는 right:0으로,top에 0으로 위치하게 하고,
+자연스럽지 못하기 때문에  가상컨텐츠에 transition을 걸어주자.*/
+
+section.visual .img .mask {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.16);
+}
+
+
+/*mask를가지고 있는 img가 position이 relative인가 확이하기*/
+
+section.visual .img .mask.a {
+    left: 0;
+}
+
+section.visual .img .mask.b {
+    left: 25%;
+}
+
+section.visual .img .mask.c {
+    left: 50%;
+}
+
+section.visual .img .mask.d {
+    left: 75%;
+}
+
+@keyframes mask {
+    0% {
+        width: 25%;
+        background: #000;
+    }
+    50% {
+        width: 25%;
+        background: #000;
+    }
+    99% {
+        background: #000;
+    }
+}
+
+section.visual .img .mask.a {
+    animation-name: mask;
+    animation-duration: 0.4s;
+}
+
+section.visual .img .mask.b {
+    animation-name: mask;
+    animation-duration: 0.6s;
+}
+
+section.visual .img .mask.c {
+    animation-name: mask;
+    animation-duration: 0.8s;
+}
+
+section.visual .img .mask.d {
+    animation-name: mask;
+    animation-duration: 1s;
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+}
+
+section.visual .title h2 {
+    animation-name: slid-up;
+    animation-duration: 1.5s;
+}
+
+section.visual .title p {
+    animation-name: slide-up;
+    animation-duration: 2.2s;
+}
+
+section.visual .menu {
+    animation-name: slide-up;
+    animation-duration: 2.8s;
+}
+
+section.visual .img img {
+    transform: scale(1);
+    animation-name: scaleani;
+    animation-duration: 2s;
+}
+
+@keyframes scaleani {
+    0% {
+        transform: scale(1.3);
+    }
+    30% {
+        transform: scale(1.3);
+    }
+}
+
+
+/*about*/
+
+section.about {
+    width: 95%;
+    margin: 40px auto;
+    position: relative;
+    text-align: center;
+}
+
+section.about img {
+    width: 100%;
+}
+
+section.about .inner {
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+section.about .inner h2 {
+    font-size: 30px;
+    color: #fff;
+    font-weight: normal;
+}
+
+section.about .inner .line {
+    width: 35%;
+    margin: 80px auto 30px;
+    position: relative;
+}
+
+section.about .inner .line span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: rgba(252, 252, 252, 0.25);
+}
+
+section.about .inner .line li {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+}
+
+section.about .inner .line li.a {
+    left: 0;
+    top: -2px;
+}
+
+section.about .inner .line li.b {
+    left: 50%;
+    top: -2px;
+    transform: translateX(-50%);
+}
+
+section.about .inner .line li.c {
+    right: 0;
+    top: -2px;
+}
+
+section.about .inner .line li:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.71);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -3px;
+    margin-left: -3px;
+    animation: dot 1.5s infinite;
+    /*animation-iteration-count;infinite :애니메이션 무한반복*/
+}
+
+@keyframes dot {
+    100% {
+        opacity: 1;
+        transform: scale(3.5);
+        opacity: 0;
+    }
+}
+
+section.about .inner ul {
+    width: 60%;
+    margin: 0 auto;
+}
+
+section.about .inner ul li {
+    color: #c5c5c5;
+    float: left;
+    width: 33.3333%;
+    font-size: 17px;
+    font-weight: 100;
+}
+
+section.about .inner ul li h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.71)
+}
+
+
+/*animation*/
+
+@keyframes opacity-ani {
+    0% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 0;
+    }
+}
+
+@keyframes slide-up2 {
+    0% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+}
+
+section.about .inner h2 {
+    animation-name: slide-up;
+    animation-duration: 0.9s;
+}
+
+section.about .inner .line span {
+    animation-name: opacity-ani;
+    animation-duration: 0.8s;
+}
+
+section.about .inner .line .a {
+    animation-name: opacity-ani;
+    animation-duration: 1.2s;
+}
+
+section.about .inner .line .b {
+    animation-name: opacity-ani;
+    animation-duration: 1.6s;
+}
+
+section.about .inner .line .c {
+    animation-name: opacity-ani;
+    animation-duration: 2s;
+}
+
+section.about .inner ul li {
+    animation-name: slide-up2;
+    animation-duration: 2.4s;
+}
+
+section.about .inner ul li:nth-child(2) {
+    animation-name: slide-up2;
+    animation-duration: 2.8s;
+}
+
+section.about .inner ul li:nth-child(3) {
+    animation-name: slide-up2;
+    animation-duration: 3s;
+}
+
+
+/*section.premium*/
+
+section.premium {
+    width: 95%;
+    margin: 40px auto;
+    padding: 100px 0;
+    box-sizing: border-box;
+    height: 1020px;
+    background: url(../img/con2_bg.jpg) no-repeat center/cover;
+    position: relative;
+}
+
+section.premium .textImg {
+    position: absolute;
+    width: 100%;
+    top: 20%;
+    left: 0;
+    display: block;
+    /*span으로 묶어져있는 img이기때문에 inline요소여서 , 
+    이미지에 에니매이션을 주기위해 width값을주려고 display;block으로 함*/
+    animation-name: widthAni;
+    animation-duration: 1.5s;
+    overflow: hidden;
+}
+
+@keyframes widthAni {
+    /*0% 일때는 width가 0%가 되게하라*/
+    0% {
+        width: 0%;
+    }
+    30% {
+        width: 0%;
+    }
+    /*이렇게 애니메이션을 작성해도 아무런 변화가 없다, 그렇기때문에
+        애니메이션이 진행되는것을 보이도록 하기위해 textImg에 overflow:hidden을 해줘야한다.
+        0%에서 30%까지 진행되는것을 보여준다*/
+}
+
+section.premium .title {
+    position: absolute;
+    left: 8%;
+    top: 35%;
+}
+
+section.premium .title h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+section.premium .title p {
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+section.premium .title a {
+    font-size: 24px;
+    display: inline-block;
+    position: relative;
+    /*a position relative 가상선택자를 만들어주기위해*/
+}
+
+section.premium .title a:before {
+    content: '';
+    width: 80px;
+    height: 15px;
+    background: rgba(0, 0, 0, 0.08);
+    position: absolute;
+    bottom: 0;
+    /*hover했을때 width:0%로 사라지게헀는데 좀더 부드럽게 사라지게 하기위해 transition을 준다*/
+    transition: all 0.3s;
+}
+
+
+/*마우스 호버할때 가상컨텐츠 사라지도록*/
+
+
+/*a에 hover했을때 before는, a에 focus햇을때 before는*/
+
+
+/*focus는 tab키로 이동해서 요소가 선택되거나, 마우스가이벤트 상태일 떄*/
+
+section.premium .title a:hover:before,
+section.premium .title a:focus:before {
+    width: 0%
+}
+
+section.premium .banner li {
+    position: absolute;
+    /*absolute로 주면 li에 있는 모든 이미지들이 하나로합쳐짐*/
+    box-shadow: 5px 6px 15px rgba(3, 3, 3, 0.4);
+    width: 15%;
+}
+
+section.premium .banner li img {
+    width: 100%;
+}
+
+section.premium .banner li:nth-child(1) {
+    left: 45%;
+    top: 15%;
+    animation-name: slide-up;
+    animation-duration: 1.2s;
+}
+
+section.premium .banner li:nth-child(2) {
+    left: 37%;
+    top: 50%;
+    animation-name: slide-up;
+    animation-duration: 1.8s;
+}
+
+section.premium .banner li:nth-child(3) {
+    left: 55%;
+    top: 62%;
+    animation-name: slide-up;
+    animation-duration: 2.2s;
+}
+
+section.premium .banner li:nth-child(4) {
+    right: 2%;
+    width: 32%;
+    max-width: 580px;
+    animation-name: slide-up;
+    animation-duration: 1.5s;
+    /*ㄴ>mox-width는 이미지 최대폭인데, 최대폭을 설정해주는 이유는 해상도가 놓은 기기에서도
+        이미지가 더 커지지 못하도록 최대폭을 정하는것이다.*/
+}
+
+
+/*section.gloabl*/
+
+section.global {
+    width: 95%;
+    margin: 40px auto 0;
+    padding: 40px 0;
+    text-align: center;
+    position: relative;
+}
+
+section.global:before {
+    content: '';
+    width: 100%;
+    height: 45%;
+    background: #eee;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+section.global .title h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+section.global .title p {
+    font-size: 18px;
+    line-height: 1.4;
+    margin-bottom: 50px;
+}
+
+section.global ul {
+    overflow: hidden;
+    padding-top: 50px;
+}
+
+section.global ul li {
+    float: left;
+    width: 25%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+section.global ul li:nth-child(1),
+section.global ul li:nth-child(3) {
+    margin-top: -50px;
+}
+
+section.global ul li a {
+    display: block;
+}
+
+section.global ul li a .img {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+    position: relative;
+    transition: all 0.2s;
+    width: 100%;
+    height: 100%;
+}
+
+section.global ul li a .img:after {
+    content: '더보기';
+    width: 100%;
+    height: 100%;
+    background: rgba(80, 64, 51, 0.8);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 22px;
+    color: #d4d4d4;
+    padding-top: 200px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+section.global ul li a:hover .img,
+section.global ul li a:focus .img {
+    transform: translate(-8px, -8px);
+    box-shadow: 15px 18px 10px rgba(0, 0, 0, 0.35);
+}
+
+section.global ul li a:hover .img:after,
+section.global ul li a:focus .img:after {
+    opacity: 1;
+}
+
+section.global ul li a h3 {
+    font-size: 22px;
+    margin: 40px 0 15px;
+}
+
+section.global ul li a h3 span {
+    display: block;
+    font-size: 18px;
+    font-weight: normal;
+    color: #888;
+}
+
+section.global ul li a p {
+    font-size: 17px;
+}
+
+section.global ul li a p img {
+    width: 100%;
+}
+
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    /* margin-top: 100px; */
+    /* 나는 상단여백을 margin-top줬는데,  강사님은 padding을줌 */
+    padding: 80px 0 0;
+}
+
+footer ul li {
+    display: inline-block;
+    /* ul li는 블록속성이여서 일렬로 나열하기 위해 inline-block준다 */
+    margin-right: 30px;
+}
+
+footer .footerLogo {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: -5px;
+    color: #39312b;
+    margin: 40px 0 20px;
+}
+
+footer p {
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+footer .copyright {
+    font-size: 15px;
+    color: #888;
+    font-weight: 100;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+footer .box {
+    padding: 150px 0;
+    /* bg imgm는  높이값을갖지 못하기때문에 padding을 준다. */
+    background: url(../img/bottom_bg.jpg);
+}
+
+footer .box h2 {
+    color: #fff;
+    font-size: 22px;
+    font-weight: normal;
+    animation-name: slide-up;
+    animation-duration: 1s;
+}
